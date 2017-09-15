@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,7 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodesEnum.cs" />
+    <Compile Include="ConfigModel.cs" />
+    <Compile Include="EntityService.cs" />
+    <Compile Include="Internal\Enums\ActionsEnum.cs" />
+    <Compile Include="Internal\Interfaces\IRequestData.cs" />
+    <Compile Include="Internal\RequestHelper.cs" />
+    <Compile Include="LanguagesEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ApiAi.licenseheader" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Internal\Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
