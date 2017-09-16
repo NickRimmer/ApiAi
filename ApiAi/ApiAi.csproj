@@ -63,8 +63,12 @@
     <Compile Include="Internal\Models\StatusJsonModel.cs" />
     <Compile Include="Internal\RequestHelper.cs" />
     <Compile Include="LanguagesEnum.cs" />
+    <Compile Include="MessageTypesEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\Models\QueryRequestJsonModel.cs" />
+    <Compile Include="QueryResponseContextModel.cs" />
+    <Compile Include="QueryResponseMessageModel.cs" />
+    <Compile Include="QueryResponseModel.cs" />
     <Compile Include="QueryService.cs" />
   </ItemGroup>
   <ItemGroup>

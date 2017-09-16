@@ -17,7 +17,7 @@ namespace ApiAi
     /// </summary>
     public static class QueryService
     {
-        public static void SendRequest(ConfigModel config, string message)
+        public static QueryResponseModel SendRequest(ConfigModel config, string message)
         {
             var requestData = new QueryRequestJsonModel
             {
@@ -28,6 +28,8 @@ namespace ApiAi
 
             var result = Internal.RequestHelper.Send<QueryRequestJsonModel, QueryResponseJsonModel>
                 (requestData, Internal.Enums.ActionsEnum.Query, System.Net.Http.HttpMethod.Post, config);
+
+            return new QueryResponseModel(result);
         }
     }
 }

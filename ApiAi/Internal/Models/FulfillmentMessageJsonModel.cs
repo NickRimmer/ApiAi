@@ -16,7 +16,7 @@ namespace ApiAi.Internal.Models
     {
 
         [JsonProperty(PropertyName = "type")]
-        public int Type { get; set; }
+        public byte Type { get; set; }
 
         [JsonProperty(PropertyName = "speech")]
         public string Speech { get; set; }
@@ -43,6 +43,6 @@ namespace ApiAi.Internal.Models
         public List<string> Replies { get; set; }
 
         [JsonProperty(PropertyName = "payload")]
-        public object Payload { get; set; }
+        public string Payload { get; set; }
     }
 }

@@ -16,17 +16,19 @@ namespace ApiAi.Tests
     [TestClass]
     public class MainTests
     {
-        public string clientToken = "your_agent_token";
+        public string clientToken = "your_client_token ";
 
         [TestMethod]
         public void QueryTest()
         {
             try
             {
-                QueryService.SendRequest(new ConfigModel { AccesTokenClient = clientToken }, "some text");
+                var result = QueryService.SendRequest(new ConfigModel { AccesTokenClient = clientToken }, "some text");
+                Assert.IsFalse(string.IsNullOrEmpty(result.SessionId));
+
             }catch(ApiAiException ex)
             {
-                // Use debug for check this "ex" value
+                // Use debug to check this "ex" value
             }
         }
     }
