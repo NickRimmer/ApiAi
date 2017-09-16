@@ -4,6 +4,7 @@
 //
 
 using ApiAi.Internal.Enums;
+using ApiAi.Internal.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,12 @@ namespace ApiAi.Internal
 {
     internal static class RequestHelper
     {
-        public static void Send(object requestData, ActionsEnum action, HttpMethod method, ConfigModel config)
+        public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config)
+            where TResponse : IResponse
         {
             try
             {
-                var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action}";
+                var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action.GetAlternativeString()}?v={ConfigModel.VersionCode}";
                 var httpRequest = (HttpWebRequest)WebRequest.Create(httpRequestUrl);
 
                 httpRequest.Method = method.Method;
@@ -42,10 +44,49 @@ namespace ApiAi.Internal
                     streamWriter.Write(jsonRequest);
                     streamWriter.Close();
                 }
+
+                return GetResponseObject<TResponse>(httpRequest.GetResponse() as HttpWebResponse);
             }
+            catch (ApiAiException) { throw; }
+            catch (System.Net.WebException ex)
+            {
+                try {
+                    return GetResponseObject<TResponse>(ex.Response as HttpWebResponse);
+                }
+                catch (ApiAiException) { throw; }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            catch (Exception) { throw; }
         }
 
         #region rainbow dust
+
+        private static TResponse GetResponseObject<TResponse>(HttpWebResponse httpResponse) where TResponse : IResponse
+        {
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+
+                try
+                {
+                    var response = JsonConvert.DeserializeObject<TResponse>(result);
+
+                    if (response == null)
+                        throw new ApiAiException(result, "Unexpected null response");
+
+                    if (response?.Status?.Code >= 400)
+                        throw new ApiAiException(result, $"Response code is: {response.Status.Code}, message: {response.Status.ErrorDetails}");
+
+                    return response;
+                }catch(Newtonsoft.Json.JsonReaderException ex)
+                {
+                    throw new ApiAiException(result, "Unexpected JSON model", ex);
+                }
+            }
+        }
 
         private static string GetToken(ActionsEnum action, ConfigModel config)
         {

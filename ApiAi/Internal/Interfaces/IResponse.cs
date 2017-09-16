@@ -9,14 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Enums
+namespace ApiAi.Internal.Interfaces
 {
-    internal enum ActionsEnum
+    internal interface IResponse
     {
-        [AlternativeValue("query")]
-        Query,
-
-        [AlternativeValue("entities")]
-        Entities
+        Models.StatusJsonModel Status { get; set; }
     }
 }
