@@ -43,22 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlternativeValueAttribute.cs" />
+    <Compile Include="Internal\Attributes\AlternativeValueAttribute.cs" />
     <Compile Include="ApiAiException.cs" />
     <Compile Include="CodesEnum.cs" />
     <Compile Include="ConfigModel.cs" />
+    <Compile Include="EntityResponseModel.cs" />
     <Compile Include="EntityService.cs" />
+    <Compile Include="Internal\Attributes\QueryParamAttribute.cs" />
     <Compile Include="Internal\Enums\ActionsEnum.cs" />
     <Compile Include="Internal\Interfaces\IFixList.cs" />
     <Compile Include="Internal\Interfaces\IResponse.cs" />
     <Compile Include="Internal\Models\ContextJsonModel.cs" />
     <Compile Include="Internal\Models\EmptyGetModel.cs" />
+    <Compile Include="Internal\Models\EntryJsonModel.cs" />
+    <Compile Include="Internal\Models\EntityResponseJsonModel.cs" />
     <Compile Include="Internal\Models\EntityJsonModel.cs" />
     <Compile Include="Internal\Models\EntityRequestJsonModel.cs" />
-    <Compile Include="Internal\Models\EntriesListRespoonseJsonModel.cs" />
+    <Compile Include="Internal\Models\EntityListRespoonseJsonModel.cs" />
     <Compile Include="Internal\Models\EventJsonModel.cs" />
     <Compile Include="Internal\Models\FulfillmentJsonModel.cs" />
     <Compile Include="Internal\Models\FulfillmentMessageJsonModel.cs" />
+    <Compile Include="Internal\Models\IdGetModel.cs" />
     <Compile Include="Internal\Models\LocationJsonModel.cs" />
     <Compile Include="Internal\Models\MetadataJsonModel.cs" />
     <Compile Include="Internal\Models\OriginalRequestJsonModel.cs" />

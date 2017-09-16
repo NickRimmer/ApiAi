@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Enums;
 using ApiAi.Internal.Interfaces;
 using Newtonsoft.Json;
@@ -26,13 +27,19 @@ namespace ApiAi.Internal
 
             try
             {
-                if(method!= HttpMethod.Post)
+                if (requestData != null)
                 {
-                    var queryString = string.Empty;
-                    if (requestData != null)
+                    var args = requestData
+                        .GetType()
+                        .GetProperties()
+                        .Where(x => x.GetCustomAttributes(typeof(QueryParamAttribute), false).Any())
+                        .OrderBy(x => QueryParam.GetOrder(typeof(TRequest), x.Name))
+                        .Select(x => Uri.EscapeDataString(x.GetValue(requestData).ToString()));
+
+                    if (args.Any())
                     {
-                        var tmp = requestData.GetType().GetProperties();
-                        throw new NotImplementedException();
+                        var parts = httpRequestUrl.Split('?');
+                        httpRequestUrl = $"{parts[0]}/{string.Join("/", args)}?{parts[1]}";
                     }
                 }
 

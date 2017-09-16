@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Models;
 using System;
 using System.Collections.Generic;

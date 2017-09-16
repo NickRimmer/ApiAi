@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi
+namespace ApiAi.Internal.Attributes
 {
     /// <summary>
     /// Alternative value for enums
     /// </summary>
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class AlternativeValueAttribute: Attribute
+    internal class AlternativeValueAttribute: Attribute
     {
         public IEnumerable<object> Values { get; set; }
 
@@ -28,7 +28,7 @@ namespace ApiAi
     /// <summary>
     /// Helper for extract alternative value of enum
     /// </summary>
-    public static class AlternativeValue
+    internal static class AlternativeValue
     {
         private static AlternativeValueAttribute GetAttribute(Enum origin)
         {

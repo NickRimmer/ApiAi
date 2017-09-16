@@ -21,7 +21,7 @@ namespace ApiAi.Internal.Models
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "count")]
-        public string Count { get; set; }
+        public int Count { get; set; }
 
         [JsonProperty(PropertyName = "preview")]
         public string Preview { get; set; }

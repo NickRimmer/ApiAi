@@ -3,21 +3,21 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
-using ApiAi.Internal.Attributes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Enums
+namespace ApiAi.Internal.Models
 {
-    internal enum ActionsEnum
+    internal class EntryJsonModel
     {
-        [AlternativeValue("query")]
-        Query,
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
 
-        [AlternativeValue("entities")]
-        Entities
+        [JsonProperty(PropertyName = "synonyms")]
+        public List<string> Synonyms { get; set; }
     }
 }
