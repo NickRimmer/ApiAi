@@ -43,22 +43,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlternativeValueAttribute.cs" />
+    <Compile Include="ApiAiException.cs" />
     <Compile Include="CodesEnum.cs" />
     <Compile Include="ConfigModel.cs" />
     <Compile Include="EntityService.cs" />
     <Compile Include="Internal\Enums\ActionsEnum.cs" />
-    <Compile Include="Internal\Interfaces\IRequestData.cs" />
+    <Compile Include="Internal\Interfaces\IResponse.cs" />
+    <Compile Include="Internal\Models\ContextJsonModel.cs" />
+    <Compile Include="Internal\Models\EntityJsonModel.cs" />
+    <Compile Include="Internal\Models\EventJsonModel.cs" />
+    <Compile Include="Internal\Models\FulfillmentJsonModel.cs" />
+    <Compile Include="Internal\Models\FulfillmentMessageJsonModel.cs" />
+    <Compile Include="Internal\Models\LocationJsonModel.cs" />
+    <Compile Include="Internal\Models\MetadataJsonModel.cs" />
+    <Compile Include="Internal\Models\OriginalRequestJsonModel.cs" />
+    <Compile Include="Internal\Models\QueryResponseJsonModel.cs" />
+    <Compile Include="Internal\Models\QueryResponseResultJsonModel.cs" />
+    <Compile Include="Internal\Models\StatusJsonModel.cs" />
     <Compile Include="Internal\RequestHelper.cs" />
     <Compile Include="LanguagesEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Internal\Models\QueryRequestJsonModel.cs" />
     <Compile Include="QueryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ApiAi.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Internal\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
