@@ -22,9 +22,20 @@ namespace ApiAi.Internal
         public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config)
             where TResponse : IResponse
         {
+            var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action.GetAlternativeString()}?v={ConfigModel.VersionCode}";
+
             try
             {
-                var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action.GetAlternativeString()}?v={ConfigModel.VersionCode}";
+                if(method!= HttpMethod.Post)
+                {
+                    var queryString = string.Empty;
+                    if (requestData != null)
+                    {
+                        var tmp = requestData.GetType().GetProperties();
+                        throw new NotImplementedException();
+                    }
+                }
+
                 var httpRequest = (HttpWebRequest)WebRequest.Create(httpRequestUrl);
 
                 httpRequest.Method = method.Method;
@@ -32,28 +43,31 @@ namespace ApiAi.Internal
                 httpRequest.Accept = "application/json";
                 httpRequest.Headers.Add("Authorization", "Bearer " + GetToken(action, config));
 
-                var jsonSettings = new JsonSerializerSettings
+                if (method == HttpMethod.Post)
                 {
-                    NullValueHandling = NullValueHandling.Ignore
-                };
+                    var jsonSettings = new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    };
 
-                var jsonRequest = JsonConvert.SerializeObject(requestData, Formatting.None, jsonSettings);
+                    var jsonRequest = JsonConvert.SerializeObject(requestData, Formatting.None, jsonSettings);
 
-                using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
-                {
-                    streamWriter.Write(jsonRequest);
-                    streamWriter.Close();
+                    using (var streamWriter = new StreamWriter(httpRequest.GetRequestStream()))
+                    {
+                        streamWriter.Write(jsonRequest);
+                        streamWriter.Close();
+                    }
                 }
 
                 return GetResponseObject<TResponse>(httpRequest.GetResponse() as HttpWebResponse);
             }
-            catch (ApiAiException) { throw; }
+            catch (ApiAiException ex) { ex.RequestedUrl = $"[{method.ToString()}] {httpRequestUrl}"; throw ex; }
             catch (System.Net.WebException ex)
             {
                 try {
                     return GetResponseObject<TResponse>(ex.Response as HttpWebResponse);
                 }
-                catch (ApiAiException) { throw; }
+                catch (ApiAiException ex2) { ex2.RequestedUrl = $"[{method.ToString()}] {httpRequestUrl}"; throw ex2; }
                 catch (Exception)
                 {
                     throw;
@@ -72,7 +86,25 @@ namespace ApiAi.Internal
 
                 try
                 {
-                    var response = JsonConvert.DeserializeObject<TResponse>(result);
+                    TResponse response;
+
+                    //if(typeof(IFixList).GetType().IsAssignableFrom(typeof(TResponse)))
+                    if(typeof(TResponse).GetInterface(nameof(IFixList)) != null)
+                    {
+                        response = (TResponse)Activator.CreateInstance(typeof(TResponse));
+                        var listFieldInfo = typeof(TResponse).GetProperty((response as IFixList).ListFixFieldName);
+
+                        var list = JsonConvert.DeserializeObject(result, listFieldInfo.PropertyType);
+                        listFieldInfo.SetValue(response, list);
+
+                        response.Status = new Models.StatusJsonModel
+                        {
+                            Code = 200,
+                            ErrorDetails = "Fixed list"
+                        };
+                    }
+                    else
+                        response = JsonConvert.DeserializeObject<TResponse>(result);
 
                     if (response == null)
                         throw new ApiAiException(result, "Unexpected null response");
@@ -81,10 +113,9 @@ namespace ApiAi.Internal
                         throw new ApiAiException(result, $"Response code is: {response.Status.Code}, message: {response.Status.ErrorDetails}");
 
                     return response;
-                }catch(Newtonsoft.Json.JsonReaderException ex)
-                {
-                    throw new ApiAiException(result, "Unexpected JSON model", ex);
                 }
+                catch (JsonSerializationException ex) { throw new ApiAiException(result, "Unexpected JSON model", ex); }
+                catch (JsonReaderException ex) { throw new ApiAiException(result, "Unexpected JSON model", ex); }
             }
         }
 

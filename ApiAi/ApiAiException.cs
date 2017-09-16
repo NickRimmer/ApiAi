@@ -15,6 +15,8 @@ namespace ApiAi
     {
         public string ResponseString { get; set; }
 
+        public string RequestedUrl { get; set; }
+
         public ApiAiException(string response, string message) : base(message) { ResponseString = response; }
 
         public ApiAiException(string response, string message, Exception innerException) : base(message, innerException) { ResponseString = response; }

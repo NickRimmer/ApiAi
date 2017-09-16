@@ -16,17 +16,28 @@ namespace ApiAi.Tests
     [TestClass]
     public class MainTests
     {
-        public string clientToken = "your_client_token ";
-
         [TestMethod]
         public void QueryTest()
         {
             try
             {
-                var result = QueryService.SendRequest(new ConfigModel { AccesTokenClient = clientToken }, "some text");
+                var result = QueryService.SendRequest(new ConfigModel { AccesTokenClient = "your_client_access_token" }, "some text");
                 Assert.IsFalse(string.IsNullOrEmpty(result.SessionId));
 
             }catch(ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+            }
+        }
+
+        [TestMethod]
+        public void EntriesListTest()
+        {
+            try
+            {
+                EntityService.GetListOfEntries(new ConfigModel { AccesTokenDeveloper = "f48994f5d27d448eb8933a76b2800ea0" });
+            }
+            catch (ApiAiException ex)
             {
                 // Use debug to check this "ex" value
             }

@@ -49,9 +49,13 @@
     <Compile Include="ConfigModel.cs" />
     <Compile Include="EntityService.cs" />
     <Compile Include="Internal\Enums\ActionsEnum.cs" />
+    <Compile Include="Internal\Interfaces\IFixList.cs" />
     <Compile Include="Internal\Interfaces\IResponse.cs" />
     <Compile Include="Internal\Models\ContextJsonModel.cs" />
+    <Compile Include="Internal\Models\EmptyGetModel.cs" />
     <Compile Include="Internal\Models\EntityJsonModel.cs" />
+    <Compile Include="Internal\Models\EntityRequestJsonModel.cs" />
+    <Compile Include="Internal\Models\EntriesListRespoonseJsonModel.cs" />
     <Compile Include="Internal\Models\EventJsonModel.cs" />
     <Compile Include="Internal\Models\FulfillmentJsonModel.cs" />
     <Compile Include="Internal\Models\FulfillmentMessageJsonModel.cs" />
