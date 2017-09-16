@@ -23,13 +23,13 @@ namespace ApiAi
         /// </summary>
         public static IEnumerable<EntityResponseModel> GetList(ConfigModel config)
         {
-            var result = Internal.RequestHelper.Send<EmptyGetModel, EntityListRespoonseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+            var result = Internal.RequestHelper.Send<EmptyRequestModel, EntityListRespoonseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
             return result.Entities.Select(x => new EntityResponseModel(x));
         }
 
         public static void GetEntity(ConfigModel config, string id)
         {
-            var result = Internal.RequestHelper.Send<IdGetModel, EntityResponseJsonModel>(new IdGetModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+            var result = Internal.RequestHelper.Send<EntityRequestJsonModel, EntityResponseJsonModel>(new EntityRequestJsonModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
         }
     }
 }

@@ -3,8 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
-using ApiAi.Internal.Attributes;
-using ApiAi.Internal.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +11,8 @@ using System.Threading.Tasks;
 
 namespace ApiAi.Internal.Models
 {
-    internal class IdGetModel
+    internal class EmptyRequestModel
     {
-        [QueryParam]
-        public string Id { get; set; }
+
     }
 }
