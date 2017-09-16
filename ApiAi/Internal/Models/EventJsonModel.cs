@@ -3,18 +3,21 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Interfaces
+namespace ApiAi.Internal.Models
 {
-    public class IRequestData
+    internal class EventJsonModel
     {
-        string Language { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
 
-
+        [JsonProperty(PropertyName = "data")]
+        public Dictionary<string, string> Data { get; set; }
     }
 }

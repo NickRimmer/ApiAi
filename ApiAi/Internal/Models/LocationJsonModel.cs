@@ -3,20 +3,21 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Enums
+namespace ApiAi.Internal.Models
 {
-    internal enum ActionsEnum
+    internal class LocationJsonModel
     {
-        [AlternativeValue("query")]
-        Query,
+        [JsonProperty(PropertyName = "latitude")]
+        public double Latitude { get; set; }
 
-        [AlternativeValue("entities")]
-        Entities
+        [JsonProperty(PropertyName = "longitude")]
+        public double Longitude { get; set; }
     }
 }

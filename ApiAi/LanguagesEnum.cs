@@ -20,91 +20,91 @@ namespace ApiAi
         /// <summary>
         /// Brazilian Portuguese
         /// </summary>
-        [AmbientValue("pt-BR")]
+        [AlternativeValue("pt-BR")]
         Brazilian,
 
         /// <summary>
         /// Chinese (Cantonese)
         /// </summary>
-        [AmbientValue("zh-HK")]
+        [AlternativeValue("zh-HK")]
         ChineseCantonese,
 
         /// <summary>
         /// Chinese (Simplified)
         /// </summary>
-        [AmbientValue("zh-CN")]
+        [AlternativeValue("zh-CN")]
         ChineseSimplified,
 
         /// <summary>
         /// Chinese (Traditional)
         /// </summary>
-        [AmbientValue("zh-TW")]
+        [AlternativeValue("zh-TW")]
         ChineseTraditional,
 
         /// <summary>
         /// English
         /// </summary>
-        [AmbientValue("en")]
+        [AlternativeValue("en")]
         English,
 
         /// <summary>
         /// Dutch
         /// </summary>
-        [AmbientValue("nl")]
+        [AlternativeValue("nl")]
         Dutch,
 
         /// <summary>
         /// French
         /// </summary>
-        [AmbientValue("fr")]
+        [AlternativeValue("fr")]
         French,
 
         /// <summary>
         /// German
         /// </summary>
-        [AmbientValue("de")]
+        [AlternativeValue("de")]
         German,
 
         /// <summary>
         /// Italian
         /// </summary>
-        [AmbientValue("it")]
+        [AlternativeValue("it")]
         Italian,
 
         /// <summary>
         /// Japanese
         /// </summary>
-        [AmbientValue("ja")]
+        [AlternativeValue("ja")]
         Japanese,
 
         /// <summary>
         /// Korean
         /// </summary>
-        [AmbientValue("ko")]
+        [AlternativeValue("ko")]
         Korean,
 
         /// <summary>
         /// Portuguese
         /// </summary>
-        [AmbientValue("pt")]
+        [AlternativeValue("pt")]
         Portuguese,
 
         /// <summary>
         /// Russian
         /// </summary>
-        [AmbientValue("ru")]
+        [AlternativeValue("ru")]
         Russian,
 
         /// <sumSpanishmary>
         /// 
         /// </summary>
-        [AmbientValue("es")]
+        [AlternativeValue("es")]
         Spanish,
 
         /// <summary>
         /// Ukrainian
         /// </summary>
-        [AmbientValue("uk")]
+        [AlternativeValue("uk")]
         Ukrainian
     }
 }
