@@ -20,8 +20,8 @@ namespace ApiAi.Tests
     {
         private const string
             ClientAccessToken = "your_client_access_token",
-            DeveloperAccessToken = "f48994f5d27d448eb8933a76b2800ea0", //"your_developer_access_token",
-            ExampleEntityId = "f655e6cc-0585-4295-bbf4-cddc45a9d988"; //"your_exists_entity_id";
+            DeveloperAccessToken = "your_developer_access_token",
+            ExampleEntityId = "your_exists_entity_id";
 
         [TestMethod]
         public void QueryTest()
@@ -90,7 +90,7 @@ namespace ApiAi.Tests
         {
             try
             {
-                EntityService.UpdateEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, "srch_hardware_str", new Dictionary<string, string[]> {
+                EntityService.UpdateEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, "test_entity_1", new Dictionary<string, string[]> {
                     { "test1", new[]{ "test 1", "test one" } },
                     { "test2", new[]{ "test 2", "test second" } }
                 });
@@ -122,8 +122,8 @@ namespace ApiAi.Tests
             try
             {
                 EntityService.AddEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, new Dictionary<string, string[]> {
-                    { "test1", new[]{ "test 1", "test one" } },
-                    { "test2", new[]{ "test 2", "test second" } }
+                    { "test3", new[]{ "test 3", "test three" } },
+                    { "test4", new[]{ "test 4", "test four" } }
                 });
             }
             catch (ApiAiException ex)
