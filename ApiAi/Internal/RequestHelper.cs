@@ -22,27 +22,17 @@ namespace ApiAi.Internal
 {
     internal static class RequestHelper
     {
-        public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config)
+        public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config, string[] queryParams = null)
             where TResponse : IResponse
         {
             var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action.GetAlternativeString()}?v={ConfigModel.VersionCode}";
 
             try
             {
-                if (requestData != null)
+                if(queryParams!=null && queryParams.Any())
                 {
-                    var args = requestData
-                        .GetType()
-                        .GetProperties()
-                        .Where(x => x.GetCustomAttributes(typeof(QueryParamAttribute), false).Any())
-                        .OrderBy(x => QueryParam.GetOrder(typeof(TRequest), x.Name))
-                        .Select(x => Uri.EscapeDataString(x.GetValue(requestData).ToString()));
-
-                    if (args.Any())
-                    {
-                        var parts = httpRequestUrl.Split('?');
-                        httpRequestUrl = $"{parts[0]}/{string.Join("/", args)}?{parts[1]}";
-                    }
+                    var parts = httpRequestUrl.Split('?');
+                    httpRequestUrl = $"{parts[0]}/{string.Join("/", queryParams)}?{parts[1]}";
                 }
 
                 var httpRequest = (HttpWebRequest)WebRequest.Create(httpRequestUrl);

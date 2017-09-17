@@ -26,7 +26,7 @@ namespace ApiAi
         /// </summary>
         public static IEnumerable<EntityResponseModel> GetEntities(ConfigModel config)
         {
-            var result = Internal.RequestHelper.Send<EmptyRequestModel, EntityListRespoonseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+            var result = Internal.RequestHelper.Send<EmptyModel, EntityListRespoonseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
             return result.Entities.Select(x => new EntityResponseModel(x));
         }
 
@@ -34,11 +34,11 @@ namespace ApiAi
         /// Retrieves the specified entity.
         /// </summary>
         /// <param name="config"></param>
-        /// <param name="id">is the ID of the entity to retrieve. You can specify the entity by its name instead of its ID</param>
+        /// <param name="entityId">Is the ID of the entity to retrieve. You can specify the entity by its name instead of its ID</param>
         /// <returns></returns>
-        public static EntriesCollectionResponseModel GetEntries(ConfigModel config, string id)
+        public static EntriesCollectionResponseModel GetEntries(ConfigModel config, string entityId)
         {
-            var result = Internal.RequestHelper.Send<EntriesRequestJsonModel, EntriesResponseJsonModel>(new EntriesRequestJsonModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+            var result = Internal.RequestHelper.Send<EmptyModel, EntriesResponseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config, new[] { entityId });
             return new EntriesCollectionResponseModel(result);
         }
 
@@ -53,6 +53,17 @@ namespace ApiAi
         {
             var result = Internal.RequestHelper.Send<EntityCreateRequestJsonModel, EntityCreateResponseModel>(new EntityCreateRequestJsonModel { Name = name, Entries = entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToList() }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Post, config);
             return result.Id;
+        }
+
+        /// <summary>
+        /// Adds entries to the specified entity.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="entityId">Is the ID of the entity to which the entries will be added. You can specify the entity by its name instead of its ID.</param>
+        /// <param name="entries">An array of entry objects, which contain reference values and synonyms (strings array).</param>
+        public static void AddEntries(ConfigModel config, string entityId, Dictionary<string, string[]> entries)
+        {
+            Internal.RequestHelper.Send<EntryJsonModel[], EmptyModel>(entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToArray(), Internal.Enums.ActionsEnum.Entities, HttpMethod.Post, config, new[] {  entityId, "entries" });
         }
     }
 }

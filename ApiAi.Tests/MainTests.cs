@@ -80,5 +80,21 @@ namespace ApiAi.Tests
                 // Use debug to check this "ex" value
             }
         }
+
+        [TestMethod]
+        public void EntriesAddTest()
+        {
+            try
+            {
+                EntityService.AddEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, new Dictionary<string, string[]> {
+                    { "test1", new[]{ "test 1", "test one" } },
+                    { "test2", new[]{ "test 2", "test second" } }
+                });
+            }
+            catch (ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+            }
+        }
     }
 }
