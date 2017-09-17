@@ -56,6 +56,23 @@ namespace ApiAi
         }
 
         /// <summary>
+        /// Updates the specified entity.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="entityId">Is the ID of the entity to update. You can specify the entity by its name instead of its ID.</param>
+        /// <param name="name">The name of the entity.</param>
+        /// <param name="entries">An array of entry objects, which contain reference values and synonyms (strings array).</param>
+        public static void UpdateEntity(ConfigModel config, string entityId, string name, Dictionary<string, string[]> entries)
+        {
+            Internal.RequestHelper.Send<EntityUpdateRequestJsonModel, EmptyModel>(new EntityUpdateRequestJsonModel { Id = entityId, Name = name, Entries = entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToList() }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Put, config);
+        }
+
+        public static void DeleteEntity(ConfigModel config, string entityId)
+        {
+            Internal.RequestHelper.Send<EmptyModel, EmptyModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Delete, config, new[] { entityId });
+        }
+
+        /// <summary>
         /// Adds entries to the specified entity.
         /// </summary>
         /// <param name="config"></param>
@@ -64,6 +81,22 @@ namespace ApiAi
         public static void AddEntries(ConfigModel config, string entityId, Dictionary<string, string[]> entries)
         {
             Internal.RequestHelper.Send<EntryJsonModel[], EmptyModel>(entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToArray(), Internal.Enums.ActionsEnum.Entities, HttpMethod.Post, config, new[] {  entityId, "entries" });
+        }
+
+        /// <summary>
+        /// Updates specifed entity entries.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="entityId">Is the ID of the entity to which the entries will be added. You can specify the entity by its name instead of its ID.</param>
+        /// <param name="entries"></param>
+        public static void UpdateEntries(ConfigModel config, string entityId, Dictionary<string, string[]> entries)
+        {
+            Internal.RequestHelper.Send<EntryJsonModel[], EmptyModel>(entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToArray(), Internal.Enums.ActionsEnum.Entities, HttpMethod.Put, config, new[] { entityId, "entries" });
+        }
+
+        public static void DeleteEntries(ConfigModel config, string entityId, params string[] entries)
+        {
+            Internal.RequestHelper.Send<string[], EmptyModel>(entries, Internal.Enums.ActionsEnum.Entities, HttpMethod.Delete, config, new[] { entityId, "entries" });
         }
     }
 }

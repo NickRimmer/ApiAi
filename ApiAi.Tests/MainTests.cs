@@ -21,7 +21,7 @@ namespace ApiAi.Tests
         private const string
             ClientAccessToken = "your_client_access_token",
             DeveloperAccessToken = "f48994f5d27d448eb8933a76b2800ea0", //"your_developer_access_token",
-            ExampleEntityId = "ec6c855e-c115-40eb-8a7b-3efbbef36464"; //"your_exists_entity_id";
+            ExampleEntityId = "f655e6cc-0585-4295-bbf4-cddc45a9d988"; //"your_exists_entity_id";
 
         [TestMethod]
         public void QueryTest()
@@ -34,6 +34,7 @@ namespace ApiAi.Tests
             }catch(ApiAiException ex)
             {
                 // Use debug to check this "ex" value
+                Assert.Fail();
             }
         }
 
@@ -48,6 +49,7 @@ namespace ApiAi.Tests
             catch (ApiAiException ex)
             {
                 // Use debug to check this "ex" value
+                Assert.Fail();
             }
         }
 
@@ -62,6 +64,7 @@ namespace ApiAi.Tests
             catch (ApiAiException ex)
             {
                 // Use debug to check this "ex" value
+                Assert.Fail();
             }
         }
 
@@ -78,6 +81,38 @@ namespace ApiAi.Tests
             catch (ApiAiException ex)
             {
                 // Use debug to check this "ex" value
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void EntityUpdateTest()
+        {
+            try
+            {
+                EntityService.UpdateEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, "srch_hardware_str", new Dictionary<string, string[]> {
+                    { "test1", new[]{ "test 1", "test one" } },
+                    { "test2", new[]{ "test 2", "test second" } }
+                });
+            }
+            catch (ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void EntityDeleteTest()
+        {
+            try
+            {
+                EntityService.DeleteEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId);
+            }
+            catch (ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+                Assert.Fail();
             }
         }
 
@@ -94,6 +129,37 @@ namespace ApiAi.Tests
             catch (ApiAiException ex)
             {
                 // Use debug to check this "ex" value
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void EntriesUpdateTest()
+        {
+            try
+            {
+                EntityService.UpdateEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, new Dictionary<string, string[]> {
+                    { "test1", new[]{ "test 1", "test one", "test before second" } },
+                });
+            }
+            catch (ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+                Assert.Fail();
+            }
+        }
+
+        [TestMethod]
+        public void EntriesDeleteTest()
+        {
+            try
+            {
+                EntityService.DeleteEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, "test1", "test2");
+            }
+            catch (ApiAiException ex)
+            {
+                // Use debug to check this "ex" value
+                Assert.Fail();
             }
         }
     }

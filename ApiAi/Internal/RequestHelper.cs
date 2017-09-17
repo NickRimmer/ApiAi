@@ -42,7 +42,7 @@ namespace ApiAi.Internal
                 httpRequest.Accept = "application/json";
                 httpRequest.Headers.Add("Authorization", "Bearer " + GetToken(action, config));
 
-                if (method == HttpMethod.Post)
+                if (new[] { HttpMethod.Post, HttpMethod.Put, HttpMethod.Delete }.Contains(method) && requestData!=null)
                 {
                     var jsonSettings = new JsonSerializerSettings
                     {

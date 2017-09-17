@@ -47,6 +47,7 @@
     <Compile Include="Exceptions\ApiAiException.cs" />
     <Compile Include="Enums\CodesEnum.cs" />
     <Compile Include="Internal\Models\Requests\EntityCreateRequestJsonModel.cs" />
+    <Compile Include="Internal\Models\Requests\EntityUpdateRequestJsonModel.cs" />
     <Compile Include="Internal\Models\Responses\EntityCreateResponseModel.cs" />
     <Compile Include="Models\ConfigModel.cs" />
     <Compile Include="Models\EntityResponseModel.cs" />
