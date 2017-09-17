@@ -10,12 +10,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ApiAi")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("ApiAi library")]
+[assembly: AssemblyDescription("Api.ai .NET library. More information about API.AI natural language processing API on site http://api.ai/")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("DIPTEAM")]
 [assembly: AssemblyProduct("ApiAi")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("DIPTEAM ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

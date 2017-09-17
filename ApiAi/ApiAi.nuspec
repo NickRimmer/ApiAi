@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ApiAi</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Nick Rimmer</authors>
+    <owners>Nick Rimmer</owners>
+    <licenseUrl>https://raw.githubusercontent.com/NickRimmer/ApiAi/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/NickRimmer/ApiAi</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Api.ai .NET library. More information about API.AI natural language processing API on site http://api.ai/</description>
+    <releaseNotes>Released version 1.0</releaseNotes>
+    <copyright>DIPTEAM 2017</copyright>
+    <tags>ApiAi Api.ai AI natural_language_processing</tags>
+  </metadata>
+</package>
