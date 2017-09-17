@@ -3,13 +3,14 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi
+namespace ApiAi.Models
 {
     /// <summary>
     /// Services configuration

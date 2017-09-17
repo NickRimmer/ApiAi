@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Models
+namespace ApiAi.Internal.Models.Responses
 {
     internal class EntityListRespoonseJsonModel: IResponse, IFixList
     {

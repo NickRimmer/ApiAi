@@ -10,14 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Models
+namespace ApiAi.Internal.Models.Requests
 {
-    internal class OriginalRequestJsonModel
+    internal class EntityUpdateRequestJsonModel: EntityCreateRequestJsonModel
     {
-        [JsonProperty(PropertyName = "source")]
-        public string Source { get; set; }
-
-        [JsonProperty(PropertyName = "data")]
-        public string Data { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
     }
 }

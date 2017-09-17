@@ -3,7 +3,6 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
-using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Models
+namespace ApiAi.Internal.Models.Requests
 {
-    internal class EntityRequestJsonModel
+    internal class EmptyModel : IResponse
     {
-        [QueryParam]
-        public string Id { get; set; }
+        public StatusJsonModel Status { get; set; }
     }
 }

@@ -5,6 +5,9 @@
 
 using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Models;
+using ApiAi.Internal.Models.Requests;
+using ApiAi.Internal.Models.Responses;
+using ApiAi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +21,12 @@ namespace ApiAi
     /// </summary>
     public static class QueryService
     {
+        /// <summary>
+        /// Takes natural language text and information as query parameters.
+        /// </summary>
+        /// <param name="config">Agent connection configuration</param>
+        /// <param name="message">Natural language text to be processed. Query length should not exceed 256 characters.</param>
+        /// <returns></returns>
         public static QueryResponseModel SendRequest(ConfigModel config, string message)
         {
             var requestData = new QueryRequestJsonModel

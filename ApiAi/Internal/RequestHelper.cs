@@ -3,9 +3,11 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Exceptions;
 using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Enums;
 using ApiAi.Internal.Interfaces;
+using ApiAi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -20,27 +22,17 @@ namespace ApiAi.Internal
 {
     internal static class RequestHelper
     {
-        public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config)
+        public static TResponse Send<TRequest, TResponse>(TRequest requestData, ActionsEnum action, HttpMethod method, ConfigModel config, string[] queryParams = null)
             where TResponse : IResponse
         {
             var httpRequestUrl = $"{ConfigModel.BaseUrl}/{action.GetAlternativeString()}?v={ConfigModel.VersionCode}";
 
             try
             {
-                if (requestData != null)
+                if(queryParams!=null && queryParams.Any())
                 {
-                    var args = requestData
-                        .GetType()
-                        .GetProperties()
-                        .Where(x => x.GetCustomAttributes(typeof(QueryParamAttribute), false).Any())
-                        .OrderBy(x => QueryParam.GetOrder(typeof(TRequest), x.Name))
-                        .Select(x => Uri.EscapeDataString(x.GetValue(requestData).ToString()));
-
-                    if (args.Any())
-                    {
-                        var parts = httpRequestUrl.Split('?');
-                        httpRequestUrl = $"{parts[0]}/{string.Join("/", args)}?{parts[1]}";
-                    }
+                    var parts = httpRequestUrl.Split('?');
+                    httpRequestUrl = $"{parts[0]}/{string.Join("/", queryParams)}?{parts[1]}";
                 }
 
                 var httpRequest = (HttpWebRequest)WebRequest.Create(httpRequestUrl);
@@ -50,7 +42,7 @@ namespace ApiAi.Internal
                 httpRequest.Accept = "application/json";
                 httpRequest.Headers.Add("Authorization", "Bearer " + GetToken(action, config));
 
-                if (method == HttpMethod.Post)
+                if (new[] { HttpMethod.Post, HttpMethod.Put, HttpMethod.Delete }.Contains(method) && requestData!=null)
                 {
                     var jsonSettings = new JsonSerializerSettings
                     {
@@ -89,10 +81,11 @@ namespace ApiAi.Internal
         {
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var result = streamReader.ReadToEnd();
+                var result = string.Empty;
 
                 try
                 {
+                    result = streamReader.ReadToEnd();
                     TResponse response;
 
                     //if(typeof(IFixList).GetType().IsAssignableFrom(typeof(TResponse)))

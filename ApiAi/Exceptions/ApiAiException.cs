@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi
+namespace ApiAi.Exceptions
 {
     public class ApiAiException : Exception
     {

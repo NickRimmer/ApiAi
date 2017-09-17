@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi
+namespace ApiAi.Enums
 {
     public enum CodesEnum: short
     {

@@ -11,26 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAi.Internal.Models
+namespace ApiAi.Internal.Models.Responses
 {
-    internal class QueryResponseJsonModel: IResponse
+    internal class EntityCreateResponseModel : IResponse
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
-        [JsonProperty(PropertyName = "timestamp")]
-        public string Timestamp { get; set; }
-
-        [JsonProperty(PropertyName = "lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty(PropertyName = "result")]
-        public QueryResponseResultJsonModel Result { get; set; }
-
         [JsonProperty(PropertyName = "status")]
         public StatusJsonModel Status { get; set; }
-
-        [JsonProperty(PropertyName = "sessionId")]
-        public string SessionId { get; set; }
     }
 }
