@@ -3,6 +3,8 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Exceptions;
+using ApiAi.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;

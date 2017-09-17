@@ -4,6 +4,7 @@
 //
 
 using ApiAi.Internal.Models;
+using ApiAi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,8 @@ namespace ApiAi
         public static void GetEntity(ConfigModel config, string id)
         {
             var result = Internal.RequestHelper.Send<EntityRequestJsonModel, EntityResponseJsonModel>(new EntityRequestJsonModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+
         }
+
     }
 }

@@ -44,10 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Internal\Attributes\AlternativeValueAttribute.cs" />
-    <Compile Include="ApiAiException.cs" />
-    <Compile Include="CodesEnum.cs" />
-    <Compile Include="ConfigModel.cs" />
-    <Compile Include="EntityResponseModel.cs" />
+    <Compile Include="Exceptions\ApiAiException.cs" />
+    <Compile Include="Enums\CodesEnum.cs" />
+    <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\EntityResponseModel.cs" />
     <Compile Include="EntityService.cs" />
     <Compile Include="Internal\Attributes\QueryParamAttribute.cs" />
     <Compile Include="Internal\Enums\ActionsEnum.cs" />
@@ -70,13 +70,13 @@
     <Compile Include="Internal\Models\QueryResponseResultJsonModel.cs" />
     <Compile Include="Internal\Models\StatusJsonModel.cs" />
     <Compile Include="Internal\RequestHelper.cs" />
-    <Compile Include="LanguagesEnum.cs" />
-    <Compile Include="MessageTypesEnum.cs" />
+    <Compile Include="Enums\LanguagesEnum.cs" />
+    <Compile Include="Enums\MessageTypesEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\Models\QueryRequestJsonModel.cs" />
-    <Compile Include="QueryResponseContextModel.cs" />
-    <Compile Include="QueryResponseMessageModel.cs" />
-    <Compile Include="QueryResponseModel.cs" />
+    <Compile Include="Models\QueryResponseContextModel.cs" />
+    <Compile Include="Models\QueryResponseMessageModel.cs" />
+    <Compile Include="Models\QueryResponseModel.cs" />
     <Compile Include="QueryService.cs" />
   </ItemGroup>
   <ItemGroup>

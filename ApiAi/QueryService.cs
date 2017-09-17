@@ -5,6 +5,7 @@
 
 using ApiAi.Internal.Attributes;
 using ApiAi.Internal.Models;
+using ApiAi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
