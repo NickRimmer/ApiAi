@@ -90,7 +90,7 @@ namespace ApiAi
         }
 
         /// <summary>
-        /// Updates specifed entity entries.
+        /// Updates specified entity entries.
         /// </summary>
         /// <param name="config">Agent connection configuration</param>
         /// <param name="entityId">Is the ID of the entity to which the entries will be added. You can specify the entity by its name instead of its ID.</param>
