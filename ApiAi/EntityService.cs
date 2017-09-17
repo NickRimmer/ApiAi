@@ -4,6 +4,8 @@
 //
 
 using ApiAi.Internal.Models;
+using ApiAi.Internal.Models.Requests;
+using ApiAi.Internal.Models.Responses;
 using ApiAi.Models;
 using System;
 using System.Collections.Generic;
@@ -40,5 +42,17 @@ namespace ApiAi
             return new EntriesCollectionResponseModel(result);
         }
 
+        /// <summary>
+        /// Creates a new entity.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="name">The name of the entity.</param>
+        /// <param name="entries">An array of entry objects, which contain reference values and synonyms (strings array).</param>
+        /// <returns>ID of created entity</returns>
+        public static string CreateEntity(ConfigModel config, string name, Dictionary<string, string[]> entries)
+        {
+            var result = Internal.RequestHelper.Send<EntityCreateRequestJsonModel, EntityCreateResponseModel>(new EntityCreateRequestJsonModel { Name = name, Entries = entries.Select(x => new EntryJsonModel { Value = x.Key, Synonyms = x.Value.ToList() }).ToList() }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Post, config);
+            return result.Id;
+        }
     }
 }

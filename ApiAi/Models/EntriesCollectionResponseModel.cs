@@ -4,6 +4,7 @@
 //
 
 using ApiAi.Internal.Models;
+using ApiAi.Internal.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;

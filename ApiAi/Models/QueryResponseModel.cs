@@ -3,6 +3,7 @@
 // Licensed under the MIT License. See LICENSE file in the project root for full license information.  
 //
 
+using ApiAi.Internal.Models.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ApiAi.Models
 {
     public class QueryResponseModel
     {
-        internal QueryResponseModel(Internal.Models.QueryResponseJsonModel data) {
+        internal QueryResponseModel(QueryResponseJsonModel data) {
             Id = data.Id;
             Timestamp = DateTime.Parse(data.Timestamp);
             Source = data.Result.Source;
