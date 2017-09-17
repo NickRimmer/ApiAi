@@ -56,7 +56,7 @@
     <Compile Include="Internal\Interfaces\IFixList.cs" />
     <Compile Include="Internal\Interfaces\IResponse.cs" />
     <Compile Include="Internal\Models\ContextJsonModel.cs" />
-    <Compile Include="Internal\Models\Requests\EmptyRequestModel.cs" />
+    <Compile Include="Internal\Models\Requests\EmptyModel.cs" />
     <Compile Include="Internal\Models\EntryJsonModel.cs" />
     <Compile Include="Internal\Models\Responses\EntityResponseJsonModel.cs" />
     <Compile Include="Internal\Models\EntityJsonModel.cs" />
