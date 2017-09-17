@@ -20,7 +20,8 @@ namespace ApiAi.Tests
     {
         private const string
             ClientAccessToken = "your_client_access_token",
-            DeveloperAccessToken = "your_developer_access_token";
+            DeveloperAccessToken = "f48994f5d27d448eb8933a76b2800ea0", //"your_developer_access_token",
+            ExampleEntityId = "ec6c855e-c115-40eb-8a7b-3efbbef36464"; //"your_exists_entity_id";
 
         [TestMethod]
         public void QueryTest()
@@ -37,11 +38,11 @@ namespace ApiAi.Tests
         }
 
         [TestMethod]
-        public void EntriesListTest()
+        public void EntitiesListTest()
         {
             try
             {
-                var result = EntityService.GetList(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken });
+                var result = EntityService.GetEntities(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken });
                 Assert.IsTrue(result.Any()); // fail you haven't any entities in the agent, it's ok (;
             }
             catch (ApiAiException ex)
@@ -51,12 +52,12 @@ namespace ApiAi.Tests
         }
 
         [TestMethod]
-        public void EntityLoadTest()
+        public void EntriesListTest()
         {
             try
             {
-                var entityId = "your_exists_entity_id";
-                EntityService.GetEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, entityId);
+                var result = EntityService.GetEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId);
+                Assert.IsTrue(result.Entries.Any());
             }
             catch (ApiAiException ex)
             {

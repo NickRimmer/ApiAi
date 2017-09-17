@@ -91,10 +91,11 @@ namespace ApiAi.Internal
         {
             using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                var result = streamReader.ReadToEnd();
+                var result = string.Empty;
 
                 try
                 {
+                    result = streamReader.ReadToEnd();
                     TResponse response;
 
                     //if(typeof(IFixList).GetType().IsAssignableFrom(typeof(TResponse)))

@@ -22,16 +22,22 @@ namespace ApiAi
         /// <summary>
         /// Retrieves a list of all entities for the agent.
         /// </summary>
-        public static IEnumerable<EntityResponseModel> GetList(ConfigModel config)
+        public static IEnumerable<EntityResponseModel> GetEntities(ConfigModel config)
         {
             var result = Internal.RequestHelper.Send<EmptyRequestModel, EntityListRespoonseJsonModel>(null, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
             return result.Entities.Select(x => new EntityResponseModel(x));
         }
 
-        public static void GetEntity(ConfigModel config, string id)
+        /// <summary>
+        /// Retrieves the specified entity.
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="id">is the ID of the entity to retrieve. You can specify the entity by its name instead of its ID</param>
+        /// <returns></returns>
+        public static EntriesCollectionResponseModel GetEntries(ConfigModel config, string id)
         {
-            var result = Internal.RequestHelper.Send<EntityRequestJsonModel, EntityResponseJsonModel>(new EntityRequestJsonModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
-
+            var result = Internal.RequestHelper.Send<EntriesRequestJsonModel, EntriesResponseJsonModel>(new EntriesRequestJsonModel { Id = id }, Internal.Enums.ActionsEnum.Entities, HttpMethod.Get, config);
+            return new EntriesCollectionResponseModel(result);
         }
 
     }

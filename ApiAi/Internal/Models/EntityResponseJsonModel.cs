@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ApiAi.Internal.Models
 {
-    internal class EntityResponseJsonModel : IResponse
+    internal class EntriesResponseJsonModel : IResponse
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -30,10 +30,13 @@ namespace ApiAi.Internal.Models
         [JsonProperty(PropertyName = "automatedExpansion")]
         public bool AutomatedExpansion { get; set; }
 
+        [JsonProperty(PropertyName = "status")]
+        private StatusJsonModel _status { get; set; }
+
         [JsonIgnore]
         public StatusJsonModel Status {
-            get => new StatusJsonModel { Code = 200, ErrorDetails = "No status response" };
-            set => throw new InvalidOperationException();
+            get => (_status ?? new StatusJsonModel { Code = 200, ErrorDetails = "No status response" });
+            set => _status = value;
         }
     }
 }

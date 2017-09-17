@@ -72,6 +72,7 @@
     <Compile Include="Internal\RequestHelper.cs" />
     <Compile Include="Enums\LanguagesEnum.cs" />
     <Compile Include="Enums\MessageTypesEnum.cs" />
+    <Compile Include="Models\EntriesCollectionResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\Models\QueryRequestJsonModel.cs" />
     <Compile Include="Models\QueryResponseContextModel.cs" />

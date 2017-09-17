@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ApiAi.Internal.Models
 {
-    internal class EntityRequestJsonModel
+    internal class EntriesRequestJsonModel
     {
         [QueryParam]
         public string Id { get; set; }
