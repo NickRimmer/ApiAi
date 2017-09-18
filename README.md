@@ -1,4 +1,6 @@
 # ApiAi
+[![NuGet version](https://badge.fury.io/nu/ApiAi.svg)](https://www.nuget.org/packages/ApiAi/)
+
 Api.ai .NET library with fully documented public methods. More information about natural language processing API on the API.AI website http://api.ai/
 
 # How to use
