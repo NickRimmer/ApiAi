@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ApiAi</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <title>$title$</title>
     <authors>Nick Rimmer</authors>
     <owners>Nick Rimmer</owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/NickRimmer/ApiAi/master/ApiAi/nuget_icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Api.ai .NET library. More information about API.AI natural language processing API on site http://api.ai/</description>
-    <releaseNotes>Released version 1.0</releaseNotes>
+    <releaseNotes>Descriptions for methods and models</releaseNotes>
     <copyright>DIPTEAM 2017</copyright>
     <tags>ApiAi Api.ai AI natural_language_processing</tags>
   </metadata>

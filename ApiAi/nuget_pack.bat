@@ -1,0 +1,1 @@
+nuget pack ApiAi.csproj -Prop Configuration=Release;Platform=AnyCPU -build

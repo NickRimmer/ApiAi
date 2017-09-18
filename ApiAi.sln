@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAi", "ApiAi\ApiAi.csproj", "{C95F5144-7D88-4EF4-A13D-FD370AB5AB36}"
 EndProject
@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ApiAi\ApiAi.nuspec = ApiAi\ApiAi.nuspec
 		LICENSE = LICENSE
 		ApiAi\nuget_icon.png = ApiAi\nuget_icon.png
+		ApiAi\nuget_pack.bat = ApiAi\nuget_pack.bat
 		README.md = README.md
 	EndProjectSection
 EndProject
