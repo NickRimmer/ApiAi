@@ -4,7 +4,7 @@ Api.ai .NET library with fully documented public methods. More information about
 # How to use
 ## Instalation
 
-Library can be installed with Nuget
+Library can be installed with [Nuget](https://www.nuget.org/packages/ApiAi/)
 ```
 PM> Install-Package ApiAi
 ```
