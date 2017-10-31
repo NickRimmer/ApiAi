@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ApiAi</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Dialogflow.com library (ApiAi)</title>
     <authors>Nick Rimmer</authors>
     <owners>Nick Rimmer</owners>

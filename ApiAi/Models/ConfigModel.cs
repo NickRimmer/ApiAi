@@ -19,7 +19,7 @@ namespace ApiAi.Models
     {
         #region magic
         internal static string 
-            BaseUrl = @"https://api.dialogflow.com/v1/",
+            BaseUrl = @"https://api.dialogflow.com/v1",
             VersionCode = @"20150910";
 
         #endregion
