@@ -1,7 +1,7 @@
-# ApiAi
+# Dialogflow (ApiAi)
 [![NuGet version](https://badge.fury.io/nu/ApiAi.svg)](https://www.nuget.org/packages/ApiAi/)
 
-Api.ai .NET library with fully documented public methods. More information about natural language processing API on the API.AI website http://api.ai/
+Dialogflow.com (Api.ai) .NET library with fully documented public methods. More information about natural language processing API on the API.AI website http://dialogflow.com/
 
 # How to use
 ## Instalation
@@ -14,16 +14,16 @@ PM> Install-Package ApiAi
 Or can be downloaded as DLL library or sources from the [Releases](https://github.com/NickRimmer/ApiAi/releases) page.
 
 ## Usage
-Assumed you already have API.AI account and have at least one agent configured. If no, please see [documentation](http://api.ai/docs/index.html) on the API.AI website.
+Assumed you already have API.AI account and have at least one agent configured. If no, please see [documentation](http://dialogflow.com/docs/index.html) on the API.AI website.
 
 ### Queries
-The query endpoint is used to process natural language in the form of text. More inforamtion [on the website](https://api.ai/docs/reference/agent/query).
+The query endpoint is used to process natural language in the form of text. More inforamtion [on the website](https://dialogflow.com/docs/reference/agent/query).
 
 - __ApiAi.QueryService.SendRequest__ method is simple method to make queries
 
 
 ### Entities
-The entities endpoint is used to create, retrieve, update, and delete developer-defined entity objects. More information [on the website](https://api.ai/docs/reference/agent/entities).
+The entities endpoint is used to create, retrieve, update, and delete developer-defined entity objects. More information [on the website](https://dialogflow.com/docs/reference/agent/entities).
 
 - __ApiAi.EntityService.GetEntities__ method retrieves a list of all entities for the agent
 - __ApiAi.EntityService.CreateEntity__ method for create a new entity
