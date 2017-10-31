@@ -2,17 +2,17 @@
 <package >
   <metadata>
     <id>ApiAi</id>
-    <version>1.0.2</version>
-    <title>$title$</title>
+    <version>1.0.3</version>
+    <title>Dialogflow.com library (ApiAi)</title>
     <authors>Nick Rimmer</authors>
     <owners>Nick Rimmer</owners>
     <licenseUrl>https://raw.githubusercontent.com/NickRimmer/ApiAi/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/NickRimmer/ApiAi</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/NickRimmer/ApiAi/master/ApiAi/nuget_icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Api.ai .NET library. More information about API.AI natural language processing API on site http://api.ai/</description>
-    <releaseNotes>Descriptions for methods and models</releaseNotes>
+    <description>Dialogflow.com .NET library. More information about API.AI natural language processing API on site http://api.ai/</description>
+    <releaseNotes>Migrate to dialogflow.com</releaseNotes>
     <copyright>DIPTEAM 2017</copyright>
-    <tags>ApiAi Api.ai AI natural_language_processing</tags>
+    <tags>Dialogflow Dialogflow.com ApiAi Api.ai AI natural_language_processing</tags>
   </metadata>
 </package>
