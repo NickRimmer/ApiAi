@@ -44,7 +44,7 @@ namespace ApiAi.Models
         /// <summary>
         /// Timezone requests parameter
         /// </summary>
-        public string TimeZone { get; set; } = System.TimeZone.CurrentTimeZone.StandardName;
+        public string TimeZone { get; set; } = System.TimeZoneInfo.Local.StandardName;
 
         /// <summary>
         /// Session ID for request
