@@ -31,7 +31,9 @@ namespace ApiAi.Tests
                 var result = QueryService.SendRequest(new ConfigModel { AccesTokenClient = ClientAccessToken }, "some text");
                 Assert.IsFalse(string.IsNullOrEmpty(result.SessionId));
 
+#pragma warning disable
             }catch(ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -46,7 +48,9 @@ namespace ApiAi.Tests
                 var result = EntityService.GetEntities(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken });
                 Assert.IsTrue(result.Any()); // fail you haven't any entities in the agent, it's ok (;
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -61,7 +65,9 @@ namespace ApiAi.Tests
                 var result = EntityService.GetEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId);
                 Assert.IsTrue(result.Entries.Any());
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -78,7 +84,9 @@ namespace ApiAi.Tests
                     { "test2", new[]{ "test 2", "test second" } }
                 });
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -95,7 +103,9 @@ namespace ApiAi.Tests
                     { "test2", new[]{ "test 2", "test second" } }
                 });
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -109,7 +119,9 @@ namespace ApiAi.Tests
             {
                 EntityService.DeleteEntity(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId);
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -126,7 +138,9 @@ namespace ApiAi.Tests
                     { "test4", new[]{ "test 4", "test four" } }
                 });
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -142,7 +156,9 @@ namespace ApiAi.Tests
                     { "test1", new[]{ "test 1", "test one", "test before second" } },
                 });
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();
@@ -156,7 +172,9 @@ namespace ApiAi.Tests
             {
                 EntityService.DeleteEntries(new ConfigModel { AccesTokenDeveloper = DeveloperAccessToken }, ExampleEntityId, "test1", "test2");
             }
+#pragma warning disable
             catch (ApiAiException ex)
+#pragma warning restore
             {
                 // Use debug to check this "ex" value
                 Assert.Fail();

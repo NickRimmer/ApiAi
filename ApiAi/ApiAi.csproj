@@ -1,93 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C95F5144-7D88-4EF4-A13D-FD370AB5AB36}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ApiAi</RootNamespace>
-    <AssemblyName>ApiAi</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.1.1</Version>
+    <Authors></Authors>
+    <Company>DIPTEAM</Company>
+    <Copyright>DIPTEAM ©  2017</Copyright>
+    <Description>Api.ai .NET library. More information about API.AI natural language processing API on site http://api.ai/</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile>bin\Release\ApiAi.xml</DocumentationFile>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Internal\Attributes\AlternativeValueAttribute.cs" />
-    <Compile Include="Exceptions\ApiAiException.cs" />
-    <Compile Include="Enums\CodesEnum.cs" />
-    <Compile Include="Internal\Models\Requests\EntityCreateRequestJsonModel.cs" />
-    <Compile Include="Internal\Models\Requests\EntityUpdateRequestJsonModel.cs" />
-    <Compile Include="Internal\Models\Responses\EntityCreateResponseModel.cs" />
-    <Compile Include="Models\ConfigModel.cs" />
-    <Compile Include="Models\EntityResponseModel.cs" />
-    <Compile Include="EntityService.cs" />
-    <Compile Include="Internal\Enums\ActionsEnum.cs" />
-    <Compile Include="Internal\Interfaces\IFixList.cs" />
-    <Compile Include="Internal\Interfaces\IResponse.cs" />
-    <Compile Include="Internal\Models\ContextJsonModel.cs" />
-    <Compile Include="Internal\Models\Requests\EmptyModel.cs" />
-    <Compile Include="Internal\Models\EntryJsonModel.cs" />
-    <Compile Include="Internal\Models\Responses\EntityResponseJsonModel.cs" />
-    <Compile Include="Internal\Models\EntityJsonModel.cs" />
-    <Compile Include="Internal\Models\Responses\EntityListRespoonseJsonModel.cs" />
-    <Compile Include="Internal\Models\EventJsonModel.cs" />
-    <Compile Include="Internal\Models\FulfillmentJsonModel.cs" />
-    <Compile Include="Internal\Models\FulfillmentMessageJsonModel.cs" />
-    <Compile Include="Internal\Models\LocationJsonModel.cs" />
-    <Compile Include="Internal\Models\MetadataJsonModel.cs" />
-    <Compile Include="Internal\Models\Requests\OriginalRequestJsonModel.cs" />
-    <Compile Include="Internal\Models\Responses\QueryResponseJsonModel.cs" />
-    <Compile Include="Internal\Models\Responses\QueryResponseResultJsonModel.cs" />
-    <Compile Include="Internal\Models\StatusJsonModel.cs" />
-    <Compile Include="Internal\RequestHelper.cs" />
-    <Compile Include="Enums\LanguagesEnum.cs" />
-    <Compile Include="Enums\MessageTypesEnum.cs" />
-    <Compile Include="Models\EntriesCollectionResponseModel.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Internal\Models\Requests\QueryRequestJsonModel.cs" />
-    <Compile Include="Models\QueryResponseContextModel.cs" />
-    <Compile Include="Models\QueryResponseMessageModel.cs" />
-    <Compile Include="Models\QueryResponseModel.cs" />
-    <Compile Include="QueryService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ApiAi.licenseheader" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
