@@ -41,5 +41,23 @@ namespace ApiAi
 
             return new QueryResponseModel(result);
         }
+
+        public static QueryResponseModel SendEvent(ConfigModel config, string eventName)
+        {
+            var requestData = new QueryRequestJsonModel
+            {
+                SessionId = (config.SessionId ?? Guid.NewGuid()).ToString(),
+                Lang = config.Language.GetAlternativeString(),
+                Event = new EventJsonModel
+                {
+                    Name = eventName
+                }
+            };
+
+            var result = Internal.RequestHelper.Send<QueryRequestJsonModel, QueryResponseJsonModel>
+                (requestData, Internal.Enums.ActionsEnum.Query, System.Net.Http.HttpMethod.Post, config);
+
+            return new QueryResponseModel(result);
+        }
     }
 }
